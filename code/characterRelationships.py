@@ -127,7 +127,7 @@ if __name__ == "__main__":
     nlp = spacy.load('en_core_web_sm')
     common_english_words = get_common_english_words('../data/common_english_words.txt')
 
-    book = read_text('../data/books/HungerGames/hungergames_1.txt')
+    book = read_text('../data/books/ASongOfIceAndFire/AGameOfThrones.txt')
     sentences = nltk.sent_tokenize(book)
     
     characters = get_named_entities(sentences)

@@ -2364,6 +2364,7 @@ serve
 service
 session
 set
+ser
 setting
 settle
 settlement
@@ -2418,6 +2419,10 @@ significantly
 silence
 silent
 silver
+lord
+queen
+saw
+singers
 similar
 similarly
 simple
