@@ -145,3 +145,4 @@ if __name__ == "__main__":
 
     plotGraph(edge_list_sentiment, nor_freq, main_characters, name='Sentiment')
     plotGraph(edge_list_cooccur, nor_freq, main_characters, name='Coocur')
+
