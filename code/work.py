@@ -26,7 +26,7 @@ def read_text(path):
 def NER(s):
     # s = lemmatizer.lemmatize(s)
     named_entities = []
-    accepted_labels = ['PERSON']
+    accepted_labels = ['PERSON', 'ORG']
     entities = nlp(s).ents
     for e in entities:
         if e.label_ in accepted_labels:
