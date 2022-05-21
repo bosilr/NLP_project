@@ -48,14 +48,29 @@ def get_named_entities(sentences):
     return named_entities
 
 
+def get_named_entities2(sentences):
+    named_entities = []
+    accepted_labels = ['PERSON', 'ORG']
+
+    for s in sentences:
+        entities = nlp(s).ents
+        labels = [e.label_ for e in entities]
+        named_entities = named_entities
+        for e in entities:
+            if e.label_ in accepted_labels:
+                named_entities.append(str(e).lower().replace("'s", ""))
+
+    return named_entities
+
+
 if __name__ == "__main__":
     nlp = spacy.load('en_core_web_sm')
     lemmatizer = WordNetLemmatizer()
 
-    book = read_text('../data/books/ASongOfIceAndFire/AGOT/chapters/Bran_1_1')
+    book = read_text('../data/books/ASongOfIceAndFire/AGOT/chapters/Bran_1_1.txt')
     sentences = nltk.sent_tokenize(book)
 
-    characters = get_named_entities(sentences)
+    characters = get_named_entities2(sentences)
     print(characters)
 
     # lemmatized_words = [lemmatizer.lemmatize(word) for word in words]
