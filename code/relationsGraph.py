@@ -2,7 +2,6 @@ import numpy as np
 import pandas as pd
 import os
 import spacy
-from preprocessing.preprocess import remove_non_alphanumeric
 nlp_basic = spacy.load('en_core_web_md')
 nlp = spacy.load('en_core_web_md')
 nlp_basic.max_length = 2000000
