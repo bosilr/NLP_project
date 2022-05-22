@@ -19,8 +19,11 @@ if __name__ == '__main__':
         text = replace_synonyms(text)
         sentences = sent_tokenize(text)
 
-        main_characters = get_main_characters("../results/books/ASongOfIceAndFire/AGOT/unique_names", 27, ["Lannister", "Jory", "Hand", "Stark", "Mormont"])
-        print(main_characters)
+        main_characters_dict = get_main_characters("../results/books/ASongOfIceAndFire/AGOT/unique_names", 27, ["Lannister", "Jory", "Hand", "Stark", "Mormont"])
+
+        main_characters = list(main_characters_dict.keys())
+        main_characters = list(map(str.lower, main_characters))
+
 
         sentiment_mtx, cooccurance_mtx = afinnSentiment(sentences, main_characters)
         print(sentiment_mtx)
