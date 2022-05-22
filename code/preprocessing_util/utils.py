@@ -62,7 +62,7 @@ def renameFiles(path):
         os.rename(src, dest)
 
 
-def read_text(path):
+def read_text_og(path):
     with open(path, encoding="utf-8") as f:
         text = f.read()
         # text = text.replace('\r', ' ').replace('\n', ' ')\
@@ -81,7 +81,7 @@ def readWholeBook(path):
     book = ""
     for chapter in chapter_lists:
         if "Appendix" not in chapter:
-            book += read_text(path + chapter)
+            book += read_text_og(path + chapter)
 
     book = book.replace('\r', ' ').replace('\n', ' ') \
         .replace("’", "'").replace("\"", "").replace("”", "").replace("“", "")
@@ -100,7 +100,7 @@ def readBookByChapters(path, from_chapter, to_chapter):
 
     book = ""
     for i in range(from_chapter, to_chapter):
-        book += read_text(path + chapter_lists[i])
+        book += read_text_og(path + chapter_lists[i])
 
     book = book.replace('\r', ' ').replace('\n', ' ') \
         .replace("’", "'").replace("\"", "").replace("”", "").replace("“", "")
@@ -184,9 +184,10 @@ if __name__ == "__main__":
     # f.close()
     # print(unique_names[0][0])
 
-    main_characters = get_main_characters("../../results/books/ASongOfIceAndFire/AGOT/unique_names", 25, ["Lannister", "Jory", "Hand", "Stark", "Mormont"])
+    main_characters = get_main_characters("../../results/books/ASongOfIceAndFire/AGOT/unique_names", 100, ["Lannister", "Jory", "Hand", "Stark", "Mormont"])
 
-    print(replace_synonyms("Eddard Stark went to the mo"))
+    print(main_characters)
+    print(replace_synonyms("Eddard Stark went to the moon"))
 
 
 
