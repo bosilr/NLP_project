@@ -6,7 +6,7 @@ import operator
 import json
 import os
 
-from preprocessing_util.preprocessing import readWholeBook, readBookByChapters, getChaptersInOrder
+from preprocessing_util.utils import readWholeBook, readBookByChapters, getChaptersInOrder
 
 
 def read_text(path):
@@ -127,7 +127,7 @@ if __name__ == "__main__":
     with safe_open_w("../results/books/ASongOfIceAndFire/AGOT/entity_dict") as f:
         json.dump(entitiy_dict, f)
 
-    with safe_open_w("../results/books/ASongOfIceAndFire/AGOT/unique_names") as f:
+    with safe_open_w("results/books/ASongOfIceAndFire/AGOT/unique_names") as f:
         json.dump(unique_names, f)
 
 
