@@ -26,7 +26,6 @@ def get_edge_list(matrix, main_characters, type):
 
     normalized_mtx = matrix / np.max(np.abs(matrix))
 
-    return_weights, return_colors, weights, colors = [], [], None, None
     # can fiddle with parameters
     if type == 'sentiment':
         weight = np.log(np.abs(1000 * normalized_mtx) + 1) * 0.7
@@ -41,8 +40,7 @@ def get_edge_list(matrix, main_characters, type):
     return edge_list
 
 
-
-def plot_relationship_graph(main_characters_dict, matrix, type, path):
+def plot_relationship_graph(main_characters_dict, matrix, type, save_file):
     main_characters = list(main_characters_dict.keys())
     label = {i: i for i in main_characters}
 
@@ -59,25 +57,18 @@ def plot_relationship_graph(main_characters_dict, matrix, type, path):
     weights = [G[u][v]['weight'] for u, v in G.edges]
     colors = [G[u][v]['color'] for u, v in G.edges]
 
-
-    print(edge_list)
-
     if type == "sentiment":
         nx.draw(G, nx.circular_layout(G), node_color='#cad8fa', node_size=np.sqrt(normalized_main_characters_freq) * 4000,
                 linewidths=10, font_size=35, labels=label, edge_color=colors, with_labels=True,
                 width=weights, edge_vmin=-1000, edge_vmax=1000, edge_cmap=plt.cm.bwr_r)
-        # nx.draw(G, nx.circular_layout(G), node_color='#b0f5f3', node_size=np.sqrt(normalized_main_characters_freq) * 4000,
-        #         linewidths=10, font_size=35, labels=label, edge_color=colors, with_labels=True,
-        #         width=weights)
     else:
-        nx.draw(G, nx.circular_layout(G), node_color='#b0f5f3', node_size=np.sqrt(normalized_main_characters_freq) * 4000, edge_cmap=plt.cm.Blues,
+        nx.draw(G, nx.circular_layout(G), node_color='#cad8fa', node_size=np.sqrt(normalized_main_characters_freq) * 4000, edge_cmap=plt.cm.Blues,
                 linewidths=10, font_size=35, labels=label, edge_color=colors, with_labels=True, width=weights)
 
     # fig.set_facecolor('#e3e3e3')
     # plt.show()
-    plt.savefig('test.png')
-
-
+    plt.savefig(save_file)
+    plt.close(fig)
 
 
 if __name__ == '__main__':
@@ -90,9 +81,11 @@ if __name__ == '__main__':
     :param exclude: which entities to exclude from NER results
     :param number_of_characters: number of most common characters to plot
     """
-    number_of_chapters = 20
+    number_of_chapters = 10
     number_of_characters = 21
     exclude = ["Lannister", "Jory", "Hand", "Stark", "Mormont"]
+    # affin, vader, text
+    ana_type = "text"
 
     while start_chapter < all_chapters:
         end_chapter = min(73, start_chapter + number_of_chapters)
@@ -101,36 +94,52 @@ if __name__ == '__main__':
         text = replace_synonyms(text)
         sentences = sent_tokenize(text)
 
-        # 27 incluide Viserys
+        # 21 include Cersei, 27 incluide Viserys
         mc = get_main_characters("../results/books/ASongOfIceAndFire/AGOT/unique_names", number_of_characters, exclude)
         main_characters_dict = get_main_character_occurances_for_chapters("../results/books/ASongOfIceAndFire/AGOT/chapters/", mc, start_chapter, end_chapter)
-        print(main_characters_dict)
         main_characters = list(main_characters_dict.keys())
         main_characters = list(map(str.lower, main_characters))
 
         # chose different sentiment analysis
+        if ana_type == 'affin':
+            sentiment_mtx, cooccurance_mtx = afinnSentiment(sentences, main_characters)
+        elif ana_type == 'vader':
+            sentiment_mtx, cooccurance_mtx = vaderSentiment(sentences, main_characters)
+            sentiment_mtx = (sentiment_mtx / 4) * 5
+        else:
+            sentiment_mtx, cooccurance_mtx = textblobSentiment(sentences, main_characters)
+            sentiment_mtx = sentiment_mtx / 4
+
+        save_file_sent = "../results/books/ASongOfIceAndFire/AGOT/sentiment/normal/"+ ana_type + "/sentiment_chapters_" + str(start_chapter) + "_" + str(end_chapter) + ".png"
+        save_file_coo = "../results/books/ASongOfIceAndFire/AGOT/sentiment/normal/" + ana_type + "/coocurance_chapters_" + str(start_chapter) + "_" + str(end_chapter) + ".png"
+
+        plot_relationship_graph(main_characters_dict, sentiment_mtx, "sentiment", save_file_sent)
+        plot_relationship_graph(main_characters_dict, cooccurance_mtx, "coocurance", save_file_coo)
+
+        start_chapter += number_of_chapters
+
+    # whole book sentiment analysis + plotting
+    book = readWholeBook("../data/books/ASongOfIceAndFire/AGOT/chapters/")
+    book = replace_synonyms(book)
+    sentences = sent_tokenize(book)
+
+    main_characters_dict = get_main_characters("../results/books/ASongOfIceAndFire/AGOT/unique_names", number_of_characters, exclude)
+    main_characters = list(main_characters_dict.keys())
+    main_characters = list(map(str.lower, main_characters))
+
+    # chose different sentiment analysis
+    if ana_type == 'affin':
         sentiment_mtx, cooccurance_mtx = afinnSentiment(sentences, main_characters)
+    elif ana_type == 'vader':
+        sentiment_mtx, cooccurance_mtx = vaderSentiment(sentences, main_characters)
+        sentiment_mtx = (sentiment_mtx / 4) * 5
+    else:
+        sentiment_mtx, cooccurance_mtx = textblobSentiment(sentences, main_characters)
+        sentiment_mtx = sentiment_mtx / 4
 
-        title =
-        plot_relationship_graph(main_characters_dict, sentiment_mtx, "sentiment", "../results/books/ASongOfIceAndFire/AGOT/")
-        # plot_relationship_graph(main_characters_dict, cooccurance_mtx, "coocurance")
+    save_file_sent = "../results/books/ASongOfIceAndFire/AGOT/sentiment/normal/" + ana_type + "/sentiment_chapters_whole.png"
+    save_file_coo = "../results/books/ASongOfIceAndFire/AGOT/sentiment/normal/" + ana_type + "/coocurance_chapters_whole.png"
 
-        print(main_characters)
-        print(main_characters_dict.values())
-        # plot_graph(main_characters, list(main_characters_dict.values()), sentiment_mtx, "test", "sentiment")
-        # plot_graph(main_characters, list(main_characters_dict.values()), cooccurance_mtx, "test", "co-occurrence")
+    plot_relationship_graph(main_characters_dict, sentiment_mtx, "sentiment", save_file_sent)
+    plot_relationship_graph(main_characters_dict, cooccurance_mtx, "coocurance", save_file_coo)
 
-        break
-
-    # # whole book sentiment analysis + plotting
-    # book = readWholeBook("../data/books/ASongOfIceAndFire/AGOT/chapters/")
-    # sentences = sent_tokenize(book)
-    #
-    # main_characters_dict = get_main_characters("../results/books/ASongOfIceAndFire/AGOT/unique_names", 27, exclude)
-    # main_characters = list(main_characters_dict.keys())
-    # main_characters = list(map(str.lower, main_characters))
-    #
-    # sentiment_mtx, cooccurance_mtx = afinnSentiment(sentences, main_characters)
-    #
-    # plot_relationship_graph(main_characters_dict, sentiment_mtx, None, None, type="sentiment")
-    # plot_relationship_graph(main_characters_dict, cooccurance_mtx, None, None, type="coocurance")

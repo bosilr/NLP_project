@@ -23,13 +23,13 @@ def vaderSentiment(sentences, main_characters):
     sentiment_mtx += alignment * cooccur_mtx
     sentiment_mtx, cooccur_mtx = np.tril(sentiment_mtx), np.tril(cooccur_mtx)
 
-    cooccur_mtx[[range(cooccur_mtx.shape[0])], [range(cooccur_mtx.shape[0])]] = 0
-    sentiment_mtx[[range(sentiment_mtx.shape[0])], [range(sentiment_mtx.shape[0])]] = 0
+    np.fill_diagonal(cooccur_mtx, 0)
+    np.fill_diagonal(sentiment_mtx, 0)
 
     return sentiment_mtx, cooccur_mtx
 
 
-# -6 -> 6
+# -5 -> 5
 def afinnSentiment(sentences, main_characters):
     afinn = Afinn()
     score = [afinn.score(s) for s in sentences]
@@ -46,8 +46,6 @@ def afinnSentiment(sentences, main_characters):
 
     np.fill_diagonal(cooccur_mtx, 0)
     np.fill_diagonal(sentiment_mtx, 0)
-    # cooccur_mtx[[range(cooccur_mtx.shape[0])], [range(cooccur_mtx.shape[0])]] = 0
-    # sentiment_mtx[[range(sentiment_mtx.shape[0])], [range(sentiment_mtx.shape[0])]] = 0
 
     return sentiment_mtx, cooccur_mtx
 
@@ -67,7 +65,7 @@ def textblobSentiment(sentences, main_characters):
     sentiment_mtx += alignment * cooccur_mtx
     sentiment_mtx, cooccur_mtx = np.tril(sentiment_mtx), np.tril(cooccur_mtx)
 
-    cooccur_mtx[[range(cooccur_mtx.shape[0])], [range(cooccur_mtx.shape[0])]] = 0
-    sentiment_mtx[[range(sentiment_mtx.shape[0])], [range(sentiment_mtx.shape[0])]] = 0
+    np.fill_diagonal(cooccur_mtx, 0)
+    np.fill_diagonal(sentiment_mtx, 0)
 
     return sentiment_mtx, cooccur_mtx
