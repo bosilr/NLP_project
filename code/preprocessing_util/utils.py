@@ -146,6 +146,39 @@ def get_character_occurances(path):
     return sorted(characters_dict.items(), key=operator.itemgetter(1), reverse=True)
 
 
+def get_main_character_occurances_for_chapters(path, main_characters, from_chapter, to_chapter):
+    """
+    :param path: path of all NER results
+    :param from_chapter: starting chapter
+    :param to_chapter: ending_chapter
+    :return: dictionary of characters order in the number of mentions in text between from_chapter and to_chapter
+    """
+    characters_dict = {}
+    for c in main_characters.keys():
+        characters_dict[c] = 0
+
+    NER_chapter_results = getChaptersInOrder(path)
+    NER_chapter_results = [r for r in NER_chapter_results if "entity_dict" not in r]
+
+    for i in range(from_chapter, to_chapter):
+        f = open(path + NER_chapter_results[i])
+        unique_names = json.load(f)
+        f.close()
+
+        synonyms = get_character_synonyms_dict()
+
+        for name in unique_names:
+            add_to_name = name[0]
+            for true_name in synonyms:
+                if name[0] in synonyms[true_name]:
+                    add_to_name = true_name
+
+            if add_to_name in characters_dict.keys():
+                characters_dict[add_to_name] += name[1]
+
+    return characters_dict
+
+
 def get_main_characters(path, max_number_of_characters, excluded_characters):
     main_characters = {}
     characters = get_character_occurances(path)
@@ -184,10 +217,15 @@ if __name__ == "__main__":
     # f.close()
     # print(unique_names[0][0])
 
-    main_characters = get_main_characters("../../results/books/ASongOfIceAndFire/AGOT/unique_names", 100, ["Lannister", "Jory", "Hand", "Stark", "Mormont"])
+    main_characters = get_main_characters("../../results/books/ASongOfIceAndFire/AGOT/unique_names", 25, ["Lannister", "Jory", "Hand", "Stark", "Mormont"])
 
     print(main_characters)
-    print(replace_synonyms("Eddard Stark went to the moon"))
+    # print(replace_synonyms("Eddard Stark went to the moon"))
+
+    # freq = get_main_character_occurances_for_chapters("../../results/books/ASongOfIceAndFire/AGOT/chapters/", main_characters, 1, 2)
+    # print(freq)
+
+
 
 
 
