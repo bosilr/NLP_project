@@ -14,7 +14,7 @@ def get_character_synonyms_dict():
             "Tyrion": ["Tyrion Lannister", "Tyrion the Imp"],
             "Arya": ["Arya Stark"],
             "Bran": ["Bran Stark"],
-            "Catelyn": ["Catelyn Tully Stark", "Catelyn Stark", "Cat", "Catelyn Tully"],
+            "Catelyn": ["Catelyn Tully Stark", "Catelyn Stark", "Cat", "Catelyn Tully", "Lady Catelyn"],
             "Daenerys": ["Dany", "Daenerys Targaryen", "Khaleesi", "Daenerys Stormborn"],
             "Viserys": ["Viserys Targaryen"],
             "Sansa": ["Sansa Stark", "Lady Sansa"],
@@ -30,7 +30,7 @@ def get_character_synonyms_dict():
             "Luwin": ["Maester Luwin"],
             "Rodrik": ["Ser Rodrik"],
             "Drogo": ["Khal Drogo"],
-            "Jaime": ["Jaime Lannister"],
+            "Jaime": ["Jaime Lannister", "Kingslayer"],
             "Varys": ["the Spider"],
             "Aemon": ["Maester Aemon"],
             "Cersei": ["Cersei Lannister"],
@@ -48,6 +48,9 @@ def get_character_synonyms_dict():
             "Walder": ["Lord Walder"],
             "Brynden": ["Ser Brynden Tully", "Blackfish", "Ser Brynden", "Brynden Tully", "Brynden Blackfish", "Uncle Brynden"],
             "Elia": ["Elia Martell"],
+            "Mance": ["Mance Rayder"],
+            "Oberyn": ["Prince Oberyn", "Oberyn Martell", "The Viper", "Viper"],
+            "Qhorin": ["Qhorin Halfhand", "Halfhand"],
             "Fill1": ["Robert Arryn"],
             "Fill2": ["Jon Arryn"]}
 
@@ -67,6 +70,14 @@ def read_text_og(path):
         text = f.read()
         # text = text.replace('\r', ' ').replace('\n', ' ')\
         #     .replace("’", "'").replace("\"", "").replace("”", "").replace("“", "")
+    return text
+
+
+def read_text(path):
+    with open(path, encoding="utf-8") as f:
+        text = f.read()
+        text = text.replace('\r', ' ').replace('\n', ' ')\
+            .replace("’", "'").replace("\"", "").replace("”", "").replace("“", "")
     return text
 
 
@@ -247,7 +258,7 @@ if __name__ == "__main__":
     # f.close()
     # print(unique_names[0][0])
 
-    main_characters = get_main_characters("../../results/books/ASongOfIceAndFire/AGOT/unique_names", 25, ["Lannister", "Jory", "Hand", "Stark", "Mormont"])
+    main_characters = get_main_characters("../../results/books/ASongOfIceAndFire/ASOS/unique_names", 21000, ["Lannister", "Jory", "Hand", "Stark", "Mormont"], chapters=False)
 
     print(main_characters)
     # print(replace_synonyms("Eddard Stark went to the moon"))
