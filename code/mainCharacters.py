@@ -1,4 +1,4 @@
-from preprocessing_util.utils import get_character_occurances2, getChaptersInOrder
+from preprocessing_util.utils import get_character_occurances2, getChaptersInOrder, get_main_characters
 
 
 if __name__ == '__main__':
@@ -6,8 +6,10 @@ if __name__ == '__main__':
     coref_spacy = "../results/books/ASongOfIceAndFire/AGOT/chapters_coref/"
     coref_allen = "../results/books/ASongOfIceAndFire/AGOT/chapters_coref_allen/"
 
-    chapters = getChaptersInOrder(normal_path)
+    chapters = getChaptersInOrder(coref_allen)
     chapters = [r for r in chapters if "entity_dict" not in r]
+
+    print(get_main_characters(coref_allen, 21000, [], chapters=True))
 
     pov_dict = {}
     for chapter in chapters:
@@ -16,7 +18,7 @@ if __name__ == '__main__':
             pov_dict[pov_character] = []
 
     for i in range(73):
-        mc = get_character_occurances2(normal_path, i, i+1, to_print=True)
+        mc = get_character_occurances2(coref_allen, i, i+1, to_print=True)
         pov_character = chapters[i].split("_")[1]
         print("POV character:", pov_character)
 

@@ -107,19 +107,19 @@ if __name__ == '__main__':
     while start_chapter < all_chapters:
         end_chapter = min(73, start_chapter + number_of_chapters)
 
-        # text = readBookByChapters("../results/books/ASongOfIceAndFire/AGOT/chapters_coref_text/", start_chapter, end_chapter)
-        text = readBookByChapters("../data/books/ASongOfIceAndFire/AGOT/chapters/", start_chapter, end_chapter)
+        text = readBookByChapters("../results/books/ASongOfIceAndFire/AGOT/chapters_coref_text/", start_chapter, end_chapter)
+        # text = readBookByChapters("../data/books/ASongOfIceAndFire/AGOT/chapters/", start_chapter, end_chapter)
 
         text = replace_synonyms(text)
         sentences = sent_tokenize(text)
 
-        # mc = get_main_characters("../results/books/ASongOfIceAndFire/AGOT/chapters_coref/", number_of_characters, exclude, chapters=True)
-        mc = get_main_characters("../results/books/ASongOfIceAndFire/AGOT/unique_names", number_of_characters, exclude, chapters=False)
+        mc = get_main_characters("../results/books/ASongOfIceAndFire/AGOT/chapters_coref/", number_of_characters, exclude, chapters=True)
+        # mc = get_main_characters("../results/books/ASongOfIceAndFire/AGOT/unique_names", number_of_characters, exclude, chapters=False)
 
         print(mc)
 
-        # main_characters_dict = get_main_character_occurances_for_chapters("../results/books/ASongOfIceAndFire/AGOT/chapters_coref/", mc, start_chapter, end_chapter)
-        main_characters_dict = get_main_character_occurances_for_chapters("../results/books/ASongOfIceAndFire/AGOT/chapters/", mc, start_chapter, end_chapter)
+        main_characters_dict = get_main_character_occurances_for_chapters("../results/books/ASongOfIceAndFire/AGOT/chapters_coref/", mc, start_chapter, end_chapter)
+        # main_characters_dict = get_main_character_occurances_for_chapters("../results/books/ASongOfIceAndFire/AGOT/chapters/", mc, start_chapter, end_chapter)
 
         main_characters = list(main_characters_dict.keys())
         main_characters = list(map(str.lower, main_characters))
@@ -135,10 +135,10 @@ if __name__ == '__main__':
             sentiment_mtx = sentiment_mtx * 5
 
 
-        # save_file_sent = "../results/books/ASongOfIceAndFire/AGOT/sentiment/coref_first/"+ ana_type + "/sentiment_chapters_" + str(start_chapter) + "_" + str(end_chapter) + ".png"
-        # save_file_coo = "../results/books/ASongOfIceAndFire/AGOT/sentiment/coref_first/" + ana_type + "/coocurance_chapters_" + str(start_chapter) + "_" + str(end_chapter) + ".png"
-        save_file_sent = "../results/books/ASongOfIceAndFire/AGOT/sentiment/normal/" + ana_type + "/sentiment_chapters_" + str(start_chapter) + "_" + str(end_chapter) + ".png"
-        save_file_coo = "../results/books/ASongOfIceAndFire/AGOT/sentiment/normal/" + ana_type + "/coocurance_chapters_" + str(start_chapter) + "_" + str(end_chapter) + ".png"
+        save_file_sent = "../results/books/ASongOfIceAndFire/AGOT/sentiment/coref_first/"+ ana_type + "/sentiment_chapters_" + str(start_chapter) + "_" + str(end_chapter) + ".png"
+        save_file_coo = "../results/books/ASongOfIceAndFire/AGOT/sentiment/coref_first/" + ana_type + "/coocurance_chapters_" + str(start_chapter) + "_" + str(end_chapter) + ".png"
+        # save_file_sent = "../results/books/ASongOfIceAndFire/AGOT/sentiment/normal/" + ana_type + "/sentiment_chapters_" + str(start_chapter) + "_" + str(end_chapter) + ".png"
+        # save_file_coo = "../results/books/ASongOfIceAndFire/AGOT/sentiment/normal/" + ana_type + "/coocurance_chapters_" + str(start_chapter) + "_" + str(end_chapter) + ".png"
 
         title1 = "Relationship graph: chapters_" + str(start_chapter) + "_" + str(end_chapter - 1)
         title2 = "Cooccurrence graph: chapters_" + str(start_chapter) + "_" + str(end_chapter - 1)
