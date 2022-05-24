@@ -1,0 +1,49 @@
+Analiza NER: FLAIR 
+
+'ent_type': 
+'correct': 1103, 
+'incorrect': 0, 
+'partial': 0, 
+'missed': 739, 
+'spurious': 167,
+ 'possible': 1842, 
+ 'actual': 1270, 
+ 'precision': 0.868503937007874, 
+ 'recall': 0.5988056460369164, 
+ 'f1': 0.7088688946015425}, 
+
+ 'partial': 
+ 'correct': 887, 
+ 'incorrect': 0, 
+ 'partial': 216, 
+ 'missed': 739, 
+ 'spurious': 167, 
+ 'possible': 1842, 
+ 'actual': 1270, 
+ 'precision': 0.7834645669291339, 
+ 'recall': 0.5401737242128122, 
+ 'f1': 0.6394601542416453}, 
+
+ 'strict': 
+ 'correct': 887, 
+ 'incorrect': 216, 
+ 'partial': 0, 
+ 'missed': 739, 
+ 'spurious': 167, 
+ 'possible': 1842, 
+ 'actual': 1270, 
+ 'precision': 0.6984251968503937, 
+ 'recall': 0.4815418023887079, 
+ 'f1': 0.5700514138817482}, 
+ 
+ 'exact': 
+ 'correct': 887, 
+ 'incorrect': 216, 
+ 'partial': 0, 
+ 'missed': 739, 
+ 'spurious': 167, 
+ 'possible': 1842, 
+ 'actual': 1270, 
+ 'precision': 0.6984251968503937, 
+ 'recall': 0.4815418023887079, 
+ 'f1': 0.5700514138817482}

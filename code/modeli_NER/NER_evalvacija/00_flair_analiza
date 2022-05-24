@@ -1,0 +1,49 @@
+Analiza NER: SPACY 
+
+'ent_type': 
+'correct': 1746, 
+'incorrect': 0, 
+'partial': 0, 
+'missed': 96, 
+'spurious': 31, 
+'possible': 1842, 
+'actual': 1777, 
+'precision': 0.9825548677546426, 
+'recall': 0.9478827361563518, 
+'f1': 0.9649074329925393}, 
+
+'partial': 
+'correct': 1416, 
+'incorrect': 0, 
+'partial': 330, 
+'missed': 96, 
+'spurious': 31, 
+'possible': 1842, 
+'actual': 1777, 
+'precision': 0.8897017445132246, 
+'recall': 0.8583061889250815, 
+'f1': 0.873722022658193}, 
+
+'strict': 
+'correct': 1416, 
+'incorrect': 330, 
+'partial': 0, 
+'missed': 96, 
+'spurious': 31, 
+'possible': 1842, 
+'actual': 1777, 
+'precision': 0.7968486212718064, 
+'recall': 0.7687296416938111, 
+'f1': 0.7825366123238464}, 
+
+'exact': 
+'correct': 1416, 
+'incorrect': 330, 
+'partial': 0, 
+'missed': 96, 
+'spurious': 31, 
+'possible': 1842, 
+'actual': 1777, 
+'precision': 0.7968486212718064, 
+'recall': 0.7687296416938111, 
+'f1': 0.7825366123238464}}
