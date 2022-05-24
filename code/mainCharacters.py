@@ -3,7 +3,7 @@ from preprocessing_util.utils import get_character_occurances2, getChaptersInOrd
 
 if __name__ == '__main__':
     normal_path = "../results/books/ASongOfIceAndFire/AGOT/chapters/"
-    coref_spacy = "../results/books/ASongOfIceAndFire/AGOT/chapters_coref/"
+    coref_spacy = "../results/books/ASongOfIceAndFire/AGOT/chapters_coref_spacy/"
     coref_allen = "../results/books/ASongOfIceAndFire/AGOT/chapters_coref_allen/"
 
     chapters = getChaptersInOrder(coref_allen)
