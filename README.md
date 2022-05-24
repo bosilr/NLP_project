@@ -4,9 +4,11 @@
 
 The goal of this project was to find main characters in a book (here specifically Game of Thrones) and determine if they are allies or foes.
 
-Scripts ![analiza2_flairNER](https://github.com/bosilr/NLP_project/blob/main/code/analiza2_flairNER.ipynb) and ![flairNERForChapters](https://github.com/bosilr/NLP_project/blob/main/code/flairNERForChapters.py) are used for Named Entity Relations, script ![sentimentAnalysis](https://github.com/bosilr/NLP_project/blob/main/code/sentimentAnalysis.py) is used for determining the relations and script ![sentimentAnalysisGraphs](https://github.com/bosilr/NLP_project/blob/main/code/sentimentAnalysisGraphs.py) is used for plotting the graphs. Different models for NER can be found in code/modeli_NER.
+Scripts ![analiza2_flairNER](https://github.com/bosilr/NLP_project/tree/main/code/analiza2_flairNER.ipynb) and ![flairNERForChapters](https://github.com/bosilr/NLP_project/tree/main/code/flairNERForChapters.py) are used for Named Entity Relations. Their evaluation is located in ![this](https://github.com/bosilr/NLP_project/tree/main/code/modeli_NER/NER_results) folder. Script ![sentimentAnalysis](https://github.com/bosilr/NLP_project/tree/main/code/sentimentAnalysis.py) is used for determining the relations and script ![sentimentAnalysisGraphs](https://github.com/bosilr/NLP_project/tree/main/code/sentimentAnalysisGraphs.py) is used for plotting the graphs. Different models for NER can be found in code/modeli_NER.
 
-All images can be found in the results folder ![here](https://github.com/bosilr/NLP_project/tree/main/results/books/ASongOfIceAndFire/AGOT/sentiment). 
+
+
+All images and results for the book A Game of Thrones can be found in the results folder ![here](https://github.com/bosilr/NLP_project/tree/main/results/books/ASongOfIceAndFire/AGOT/). 
 
 
 ## Generated GIFs for Knowledge graphs
