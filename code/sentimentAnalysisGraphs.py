@@ -99,26 +99,26 @@ if __name__ == '__main__':
     number_of_chapters = 8
     # 21 include Cersei, 27 incluide Viserys
     number_of_characters = 21
-    exclude = ["Lannister", "Jory", "Hand", "Stark", "Mormont", "Grace"]
+    exclude = ["Lannister", "Jory", "Hand", "Stark", "Mormont", "Grace", "She"]
 
     # affin, vader, text
-    ana_type = "vader"
+    ana_type = "text"
 
     while start_chapter < all_chapters:
         end_chapter = min(73, start_chapter + number_of_chapters)
 
-        text = readBookByChapters("../results/books/ASongOfIceAndFire/AGOT/chapters_coref_text/", start_chapter, end_chapter)
+        text = readBookByChapters("../results/books/ASongOfIceAndFire/AGOT/chapters_coref_allen_text/", start_chapter, end_chapter)
         # text = readBookByChapters("../data/books/ASongOfIceAndFire/AGOT/chapters/", start_chapter, end_chapter)
 
         text = replace_synonyms(text)
         sentences = sent_tokenize(text)
 
-        mc = get_main_characters("../results/books/ASongOfIceAndFire/AGOT/chapters_coref/", number_of_characters, exclude, chapters=True)
+        mc = get_main_characters("../results/books/ASongOfIceAndFire/AGOT/chapters_coref_allen/", number_of_characters, exclude, chapters=True)
         # mc = get_main_characters("../results/books/ASongOfIceAndFire/AGOT/unique_names", number_of_characters, exclude, chapters=False)
 
         print(mc)
 
-        main_characters_dict = get_main_character_occurances_for_chapters("../results/books/ASongOfIceAndFire/AGOT/chapters_coref/", mc, start_chapter, end_chapter)
+        main_characters_dict = get_main_character_occurances_for_chapters("../results/books/ASongOfIceAndFire/AGOT/chapters_coref_allen/", mc, start_chapter, end_chapter)
         # main_characters_dict = get_main_character_occurances_for_chapters("../results/books/ASongOfIceAndFire/AGOT/chapters/", mc, start_chapter, end_chapter)
 
         main_characters = list(main_characters_dict.keys())
@@ -135,8 +135,8 @@ if __name__ == '__main__':
             sentiment_mtx = sentiment_mtx * 5
 
 
-        save_file_sent = "../results/books/ASongOfIceAndFire/AGOT/sentiment/coref_first/"+ ana_type + "/sentiment_chapters_" + str(start_chapter) + "_" + str(end_chapter) + ".png"
-        save_file_coo = "../results/books/ASongOfIceAndFire/AGOT/sentiment/coref_first/" + ana_type + "/coocurance_chapters_" + str(start_chapter) + "_" + str(end_chapter) + ".png"
+        save_file_sent = "../results/books/ASongOfIceAndFire/AGOT/sentiment/coref_allen/"+ ana_type + "/sentiment_chapters_" + str(start_chapter) + "_" + str(end_chapter) + ".png"
+        save_file_coo = "../results/books/ASongOfIceAndFire/AGOT/sentiment/coref_allen/" + ana_type + "/coocurance_chapters_" + str(start_chapter) + "_" + str(end_chapter) + ".png"
         # save_file_sent = "../results/books/ASongOfIceAndFire/AGOT/sentiment/normal/" + ana_type + "/sentiment_chapters_" + str(start_chapter) + "_" + str(end_chapter) + ".png"
         # save_file_coo = "../results/books/ASongOfIceAndFire/AGOT/sentiment/normal/" + ana_type + "/coocurance_chapters_" + str(start_chapter) + "_" + str(end_chapter) + ".png"
 
@@ -152,15 +152,15 @@ if __name__ == '__main__':
 ###############################################################################################################
 
     # whole book sentiment analysis + plotting
-    # book = readWholeBook("../results/books/ASongOfIceAndFire/AGOT/chapters_coref_text/")
-    book = readWholeBook("../data/books/ASongOfIceAndFire/AGOT/chapters/")
+    book = readWholeBook("../results/books/ASongOfIceAndFire/AGOT/chapters_coref_allen_text/")
+    # book = readWholeBook("../data/books/ASongOfIceAndFire/AGOT/chapters/")
     # book = read_text("../data/books/ASongOfIceAndFire/ASOS/AStormOfSwords")
     # print(book)
     book = replace_synonyms(book)
     sentences = sent_tokenize(book)
 
-    # main_characters_dict = get_main_characters("../results/books/ASongOfIceAndFire/AGOT/chapters_coref/", number_of_characters, exclude, chapters=True)
-    main_characters_dict = get_main_characters("../results/books/ASongOfIceAndFire/AGOT/unique_names", number_of_characters, exclude, chapters=False)
+    main_characters_dict = get_main_characters("../results/books/ASongOfIceAndFire/AGOT/chapters_coref_allen/", number_of_characters, exclude, chapters=True)
+    # main_characters_dict = get_main_characters("../results/books/ASongOfIceAndFire/AGOT/unique_names", number_of_characters, exclude, chapters=False)
     print(main_characters_dict)
 
     main_characters = list(main_characters_dict.keys())
@@ -176,10 +176,10 @@ if __name__ == '__main__':
         sentiment_mtx, cooccurance_mtx = textblobSentiment(sentences, main_characters)
         sentiment_mtx = sentiment_mtx / 4
 
-    # save_file_sent = "../results/books/ASongOfIceAndFire/AGOT/sentiment/coref_first/" + ana_type + "/sentiment_chapters_whole.png"
-    # save_file_coo = "../results/books/ASongOfIceAndFire/AGOT/sentiment/coref_first/" + ana_type + "/coocurance_chapters_whole.png"
-    save_file_sent = "../results/books/ASongOfIceAndFire/AGOT/sentiment/normal/" + ana_type + "/sentiment_chapters_whole.png"
-    save_file_coo = "../results/books/ASongOfIceAndFire/AGOT/sentiment/normal/" + ana_type + "/coocurance_chapters_whole.png"
+    save_file_sent = "../results/books/ASongOfIceAndFire/AGOT/sentiment/coref_allen/" + ana_type + "/sentiment_chapters_whole.png"
+    save_file_coo = "../results/books/ASongOfIceAndFire/AGOT/sentiment/coref_allen/" + ana_type + "/coocurance_chapters_whole.png"
+    # save_file_sent = "../results/books/ASongOfIceAndFire/AGOT/sentiment/normal/" + ana_type + "/sentiment_chapters_whole.png"
+    # save_file_coo = "../results/books/ASongOfIceAndFire/AGOT/sentiment/normal/" + ana_type + "/coocurance_chapters_whole.png"
 
     title1 = "Relationship graph: AGOT whole book"
     title2 = "Cooccurrence graph: AGOT whole book"
