@@ -146,6 +146,33 @@ def get_character_occurances(path):
     return sorted(characters_dict.items(), key=operator.itemgetter(1), reverse=True)
 
 
+def get_character_occurances2(path):
+    characters_dict = {}
+
+    NER_chapter_results = getChaptersInOrder(path)
+    NER_chapter_results = [r for r in NER_chapter_results if "entity_dict" not in r]
+
+    for i in range(1, 73):
+        f = open(path + NER_chapter_results[i])
+        unique_names = json.load(f)
+        f.close()
+
+        synonyms = get_character_synonyms_dict()
+
+        for name in unique_names:
+            add_to_name = name[0]
+            for true_name in synonyms:
+                if name[0] in synonyms[true_name]:
+                    add_to_name = true_name
+
+            if add_to_name not in characters_dict:
+                characters_dict[add_to_name] = name[1]
+            else:
+                characters_dict[add_to_name] += name[1]
+
+    return sorted(characters_dict.items(), key=operator.itemgetter(1), reverse=True)
+
+
 def get_main_character_occurances_for_chapters(path, main_characters, from_chapter, to_chapter):
     """
     :param path: path of all NER results
@@ -179,9 +206,12 @@ def get_main_character_occurances_for_chapters(path, main_characters, from_chapt
     return characters_dict
 
 
-def get_main_characters(path, max_number_of_characters, excluded_characters):
+def get_main_characters(path, max_number_of_characters, excluded_characters, chapters):
     main_characters = {}
-    characters = get_character_occurances(path)
+    if chapters:
+        characters = get_character_occurances2(path)
+    else:
+        characters = get_character_occurances(path)
 
     for char in characters:
         if char[0] not in excluded_characters:
