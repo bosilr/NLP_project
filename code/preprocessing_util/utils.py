@@ -157,13 +157,15 @@ def get_character_occurances(path):
     return sorted(characters_dict.items(), key=operator.itemgetter(1), reverse=True)
 
 
-def get_character_occurances2(path):
+def get_character_occurances2(path, form_chapter, to_chapter, to_print=False):
     characters_dict = {}
 
     NER_chapter_results = getChaptersInOrder(path)
     NER_chapter_results = [r for r in NER_chapter_results if "entity_dict" not in r]
 
-    for i in range(1, 73):
+    for i in range(form_chapter, to_chapter):
+        if to_print:
+            print(NER_chapter_results[i])
         f = open(path + NER_chapter_results[i])
         unique_names = json.load(f)
         f.close()
@@ -220,7 +222,7 @@ def get_main_character_occurances_for_chapters(path, main_characters, from_chapt
 def get_main_characters(path, max_number_of_characters, excluded_characters, chapters):
     main_characters = {}
     if chapters:
-        characters = get_character_occurances2(path)
+        characters = get_character_occurances2(path, 1, 73)
     else:
         characters = get_character_occurances(path)
 
