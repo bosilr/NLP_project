@@ -1,0 +1,49 @@
+Analiza NER: Stanza
+
+'ent_type': 
+'correct': 1575, 
+'incorrect': 0, 
+'partial': 0,
+'missed': 267, 
+'spurious': 152, 
+'possible': 1842, 
+'actual': 1727, 
+'precision': 0.9119861030689056, 
+'recall': 0.8550488599348535, 
+'f1': 0.8826001681143177, 
+
+'partial':
+'correct': 1267, 
+'incorrect': 0, 
+'partial': 308, 
+'missed': 267, 
+'spurious': 152, 
+'possible': 1842, 
+'actual': 1727, 
+'precision': 0.8228141285466126, 
+'recall': 0.7714440825190011, 
+'f1': 0.7963014850098066,
+
+'strict': 
+'correct': 1267, 
+'incorrect': 308, 
+'partial': 0, 
+'missed': 267, 
+'spurious': 152, 
+'possible': 1842, 
+'actual': 1727, 
+'precision': 0.7336421540243196, 
+'recall': 0.6878393051031487, 
+'f1': 0.7100028019052955, 
+
+'exact': 
+'correct': 1267, 
+'incorrect': 308, 
+'partial': 0, 
+'missed': 267, 
+'spurious': 152, 
+'possible': 1842, 
+'actual': 1727, 
+'precision': 0.7336421540243196, 
+'recall': 0.6878393051031487, 
+'f1': 0.7100028019052955

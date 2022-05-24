@@ -1,0 +1,49 @@
+Analiza NER: Stanford (Only B-PER)
+
+'ent_type': 
+'correct': 2644, 
+'incorrect': 0, 
+'partial': 0, 
+'missed': 493, 
+'spurious': 391, 
+'possible': 3137, 
+'actual': 3035, 
+'precision': 0.8711696869851729,
+'recall': 0.8428434810328339, 
+'f1': 0.8567725210628646}, 
+
+'partial': 
+'correct': 2644, 
+'incorrect': 0, 
+'partial': 0, 
+'missed': 493, 
+'spurious': 391, 
+'possible': 3137, 
+'actual': 3035, 
+'precision': 0.8711696869851729, 
+'recall': 0.8428434810328339, 
+'f1': 0.8567725210628646},
+
+'strict': {'correct': 2644, 
+'incorrect': 0, 
+'partial': 0, 
+'missed': 493, 
+'spurious': 391, 
+'possible': 3137, 
+'actual': 3035, 
+'precision': 0.8711696869851729, 
+'recall': 0.8428434810328339, 
+'f1': 0.8567725210628646}, 
+
+'exact': 
+'correct': 2644, 
+'incorrect': 0, 
+'partial': 0, 
+'missed': 493, 
+'spurious': 391, 
+'possible': 3137, 
+'actual': 3035, 
+'precision': 0.8711696869851729, 
+'recall': 0.8428434810328339, 
+'f1': 0.8567725210628646}}
+

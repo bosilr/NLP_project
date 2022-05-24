@@ -1,0 +1,49 @@
+Analiza NER: NLTK 
+
+'ent_type': 
+'correct': 1415, 
+'incorrect': 0, 
+'partial': 0, 
+'missed': 427, 
+'spurious': 590, 
+'possible': 1842, 
+'actual': 2005, 
+'precision': 0.7057356608478803, 
+'recall': 0.7681867535287731, 
+'f1': 0.7356381596048869}, 
+
+'partial': 
+'correct': 945, 
+'incorrect': 0, 
+'partial': 470, 
+'missed': 427, 
+'spurious': 590, 
+'possible': 1842, 
+'actual': 2005, 
+'precision': 0.5885286783042394, 
+'recall': 0.6406080347448425, 
+'f1': 0.6134650376917077}, 
+
+'strict': 
+'correct': 945, 
+'incorrect': 470, 
+'partial': 0, 
+'missed': 427, 
+'spurious': 590, 
+'possible': 1842, 
+'actual': 2005, 
+'precision': 0.4713216957605985, 
+'recall': 0.5130293159609121, 
+'f1': 0.4912919157785287}, 
+
+'exact': 
+'correct': 945, 
+'incorrect': 470, 
+'partial': 0, 
+'missed': 427, 
+'spurious': 590, 
+'possible': 1842, 
+'actual': 2005, 
+'precision': 0.4713216957605985, 
+'recall': 0.5130293159609121, 
+'f1': 0.4912919157785287
