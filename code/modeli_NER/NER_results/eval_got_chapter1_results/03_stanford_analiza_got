@@ -1,0 +1,49 @@
+GoT - Chapter_1 - Stanford
+
+'ent_type': 
+'correct': 102, 
+'incorrect': 0, 
+'partial': 0, 
+'missed': 62, 
+'spurious': 27, 
+'possible': 164, 
+'actual': 129, 
+'precision': 0.7906976744186046, 
+'recall': 0.6219512195121951, 
+'f1': 0.6962457337883959, 
+
+'partial': 
+'correct': 102, 
+'incorrect': 0, 
+'partial': 0, 
+'missed': 62, 
+'spurious': 27, 
+'possible': 164, 
+'actual': 129, 
+'precision': 0.7906976744186046, 
+'recall': 0.6219512195121951, 
+'f1': 0.6962457337883959, 
+
+'strict': 
+'correct': 102, 
+'incorrect': 0, 
+'partial': 0, 
+'missed': 62, 
+'spurious': 27, 
+'possible': 164,
+'actual': 129, 
+'precision': 0.7906976744186046, 
+'recall': 0.6219512195121951, 
+'f1': 0.6962457337883959, 
+
+'exact': 
+'correct': 102, 
+'incorrect': 0, 
+'partial': 0, 
+'missed': 62, 
+'spurious': 27, 
+'possible': 164, 
+'actual': 129, 
+'precision': 0.7906976744186046, 
+'recall': 0.6219512195121951, 
+'f1': 0.6962457337883959

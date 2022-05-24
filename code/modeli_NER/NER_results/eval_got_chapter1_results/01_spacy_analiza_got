@@ -1,0 +1,48 @@
+GoT - Chapter_1 - Spacy
+
+'ent_type': 
+'correct': 44, 
+'incorrect': 0, 
+'partial': 0, 
+'missed': 120, 
+'spurious': 1, 
+'possible': 164,
+'actual': 45, 
+'precision': 0.9777777777777777, 
+'recall': 0.2682926829268293, 
+'f1': 0.42105263157894746, 
+
+'partial': 
+'correct': 41, 
+'incorrect': 0, 
+'partial': 3, 
+'missed': 120, 
+'spurious': 1, 
+'possible': 164, 
+'actual': 45, 
+'precision': 0.9444444444444444, 
+'recall': 0.25914634146341464, 
+'f1': 0.40669856459330145, 
+
+'strict': 
+'correct': 41, 
+'incorrect': 3, 
+'partial': 0, 
+'missed': 120, 
+'spurious': 1, 
+'possible': 164, 
+'actual': 45, 
+'precision': 0.9111111111111111, 
+'recall': 0.25, 
+'f1': 0.39234449760765555, 
+
+'exact': 
+'correct': 41, 
+'incorrect': 3, 
+'partial': 0, 
+'missed': 120, 
+'spurious': 1, 
+'possible': 164, 
+'actual': 45, 
+'precision': 0.9111111111111111, 
+'recall': 0.25, 'f1': 0.39234449760765555

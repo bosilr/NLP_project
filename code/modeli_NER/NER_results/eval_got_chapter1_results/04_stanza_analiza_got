@@ -1,0 +1,50 @@
+
+GoT - Chapter_1 - Stanza
+
+'ent_type': 
+'correct': 149, 
+'incorrect': 0, 
+'partial': 0, 
+'missed': 15, 
+'spurious': 13, 
+'possible': 164, 
+'actual': 162, 
+'precision': 0.9197530864197531, 
+'recall': 0.9085365853658537, 
+'f1': 0.9141104294478528}, 
+
+'partial': 
+'correct': 143, 
+'incorrect': 0, 
+'partial': 6, 
+'missed': 15, 
+'spurious': 13, 
+'possible': 164,
+'actual': 162, 
+'precision': 0.9012345679012346, 
+'recall': 0.8902439024390244, 
+'f1': 0.8957055214723927}, 
+
+'strict': 
+'correct': 143, 
+'incorrect': 6, 
+'partial': 0, 
+'missed': 15, 
+'spurious': 13, 
+'possible': 164, 
+'actual': 162, 
+'precision': 0.8827160493827161, 
+'recall': 0.8719512195121951, 
+'f1': 0.8773006134969324}, 
+
+'exact': 
+'correct': 143, 
+'incorrect': 6, 
+'partial': 0, 
+'missed': 15, 
+'spurious': 13, 
+'possible': 164, 
+'actual': 162, 
+'precision': 0.8827160493827161, 
+'recall': 0.8719512195121951, 
+'f1': 0.8773006134969324}}
