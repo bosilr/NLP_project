@@ -27,6 +27,8 @@ To obtain the same final results, that are present in the report and in the ![re
    
 * to obtain the sentiment analysis graphs you run ![sentimentAnalysisGraphs.py](https://github.com/bosilr/NLP_project/tree/main/code/sentimentAnalysisGraphs.py). Currently the code is set to use NER results from the Allennlp coreference resolution, if you wish to use different NER results the correct paths need to be changed. (To use NER results without coreference resolution you will need to change some variables (all are commented in main next to their replacements)).
 
+If you have any problems of questions you can contact us on github: MGG#3032 or Krompir#5509
+
 ## Generated GIFs for Knowledge graphs
 These GIFs represent knowledge graphs obtained from our model with different parameters
 
