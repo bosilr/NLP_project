@@ -23,7 +23,7 @@ To obtain the same final results, that are present in the report and in the ![re
     * NER with spaCy coreference resolution: ![results/books/ASongOfIceAndFire/AGOT/chapters_coref_spacy](https://github.com/bosilr/NLP_project/tree/main/results/books/ASongOfIceAndFire/AGOT/chapters_coref_spacy) 
 
 * to obtain the results for detecting the main characters of chapters you run ![mainCharacters.py](https://github.com/bosilr/NLP_project/tree/main/code/mainCharacters.py).
-    * depending on the path in code (noraml_path, coref_spacy, coref_allen) different NER results will be used in the analysis
+    * depending on the path in code (normal_path, coref_spacy, coref_allen) different NER results will be used in the analysis
    
 * to obtain the sentiment analysis graphs you run ![sentimentAnalysisGraphs.py](https://github.com/bosilr/NLP_project/tree/main/code/sentimentAnalysisGraphs.py). Currently the code is set to use NER results from the Allennlp coreference resolution, if you wish to use different NER results the correct paths need to be changed. (To use NER results without coreference resolution you will need to change some variables (all are commented in main next to their replacements)).
 
